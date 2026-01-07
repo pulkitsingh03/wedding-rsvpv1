@@ -372,6 +372,7 @@
     try {
       const fd = new FormData(form);
       const payload = {};
+      payload.target_sheet = 'Wedding_Only';
       payload.name = fd.get('name').toString().trim();
       payload.phone = fd.get('phone').toString().trim();
       payload.attendance_overall = fd.get('attendance_overall');
@@ -379,7 +380,7 @@
       // Removed Engagement payload
       payload.events_haldi_sangeet = form.querySelector('input[name="events_haldi_sangeet"]').checked ? 'Yes' : 'No';
       payload.events_wedding = form.querySelector('input[name="events_wedding"]').checked ? 'Yes' : 'No';
-
+      
       await fetch(scriptURL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
